@@ -1,32 +1,38 @@
-from tkinter import Tk, Label, Entry, Button
+from tkinter import Tk, Label, Entry, Button, Frame
 
-ventana = Tk()
-ventana.title("Ejemplo de Relative Place")
-ventana.geometry("400x200")
+class FrmPrincipal(Frame):
 
-def fnsuma():
-    num1 = txt1.get()
-    num2 = txt2.get()
-    num3 = float(num1) + float(num2)
-    txt3.delete(0,'end')
-    txt3.insert(0, num3)
+    def __init__(self, master=None):
+        super().__init__(master, width=320,height=170)
+        self.master = master
+        self.pack()
+        self.crearWidgets()
 
-lbl1 = Label(ventana, text="Primer número:",bg="yellow")
-lbl1.place(relx=0.03,rely=0.04,relwidth=0.23,relheight=0.1)
-txt1 = Entry(ventana, bg="pink")
-txt1.place(relx=0.3, rely=0.04, relwidth=0.22, relheight=0.1)
+    def fnsuma(self):
+        num1 = self.txt1.get()
+        num2 = self.txt2.get()
+        num3 = float(num1) + float(num2)
+        self.txt3.delete(0,'end')
+        self.txt3.insert(0, num3)
 
-lbl2 = Label(ventana, text="Segundo número:",bg="yellow")
-lbl2.place(relx=0.03,rely=0.17,relwidth=0.23,relheight=0.1)
-txt2 = Entry(ventana, bg="pink")
-txt2.place(relx=0.3, rely=0.17, relwidth=0.22, relheight=0.1)
+    def crearWidgets(self):
+        self.lbl1 = Label(self, text="Primer número:",bg="yellow")
+        self.txt1 = Entry(self, bg="pink")
+        self.lbl2 = Label(self, text="Segundo número:",bg="yellow")
+        self.txt2 = Entry(self, bg="pink")
+        self.btn = Button(self, text="Sumar",command=self.fnsuma)
+        self.lbl3 = Label(self, text="Resultado:",bg="yellow")
+        self.txt3 = Entry(self, bg="pink")
+     
+        self.lbl1.place(x=10,y=10,width=100, height=30)
+        self.txt1.place(x=120,y=10,width=100, height=30)
+        self.lbl2.place(x=10,y=50,width=100, height=30)
+        self.txt2.place(x=120,y=50,width=100, height=30)
+        self.btn.place(x=230,y=50,width=80, height=30)
+        self.lbl3.place(x=10,y=120,width=100, height=30)
+        self.txt3.place(x=120,y=120,width=100, height=30)
 
-btn = Button(ventana, text="Sumar",command=fnsuma)
-btn.place(relx=0.55, rely=0.17,relwidth=0.20, relheight=0.1)
-
-lbl3 = Label(ventana, text="Resultado:",bg="yellow")
-lbl3.place(relx=0.03,rely=0.35,relwidth=0.23,relheight=0.1)
-txt3 = Entry(ventana, bg="pink")
-txt3.place(relx=0.3, rely=0.35, relwidth=0.22, relheight=0.1)
-
-ventana.mainloop()
+root = Tk()
+root.wm_title("Suma de dos números")
+app = FrmPrincipal(root)
+app.mainloop()
