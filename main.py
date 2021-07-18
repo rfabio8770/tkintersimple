@@ -1,7 +1,7 @@
 from tkinter import Tk, Label, Entry, Button
 
 ventana = Tk()
-ventana.title("Ejemplo de Place")
+ventana.title("Ejemplo de Relative Place")
 ventana.geometry("400x200")
 
 def fnsuma():
@@ -12,20 +12,21 @@ def fnsuma():
     txt3.insert(0, num3)
 
 lbl1 = Label(ventana, text="Primer número:",bg="yellow")
-lbl1.place(x=10,y=10,width=100,height=30)
+lbl1.place(relx=0.03,rely=0.04,relwidth=0.23,relheight=0.1)
 txt1 = Entry(ventana, bg="pink")
-txt1.place(x=120, y=10, width=100, height=30)
+txt1.place(relx=0.3, rely=0.04, relwidth=0.22, relheight=0.1)
 
 lbl2 = Label(ventana, text="Segundo número:",bg="yellow")
-lbl2.place(x=10,y=50,width=100,height=30)
+lbl2.place(relx=0.03,rely=0.17,relwidth=0.23,relheight=0.1)
 txt2 = Entry(ventana, bg="pink")
-txt2.place(x=120, y=50, width=100, height=30)
+txt2.place(relx=0.3, rely=0.17, relwidth=0.22, relheight=0.1)
+
 btn = Button(ventana, text="Sumar",command=fnsuma)
-btn.place(x=230, y=50,width=80, height=20)
+btn.place(relx=0.55, rely=0.17,relwidth=0.20, relheight=0.1)
 
 lbl3 = Label(ventana, text="Resultado:",bg="yellow")
-lbl3.place(x=10,y=120,width=100,height=30)
+lbl3.place(relx=0.03,rely=0.35,relwidth=0.23,relheight=0.1)
 txt3 = Entry(ventana, bg="pink")
-txt3.place(x=120, y=120, width=100, height=30)
+txt3.place(relx=0.3, rely=0.35, relwidth=0.22, relheight=0.1)
 
 ventana.mainloop()
